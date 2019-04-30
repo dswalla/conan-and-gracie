@@ -3,10 +3,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 
 .content {
   display: flex;
   flex-direction: column;
+}
+
+.footer {
+  color: grey;
+  font-size: 0.8rem;
 }
