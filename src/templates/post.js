@@ -10,8 +10,8 @@ export const query = graphql`
       description
       image {
         asset {
-          fluid(maxWidth: 700) {
-            ...GatsbySanityImageFluid
+          fixed(height: 400) {
+            ...GatsbySanityImageFixed
           }
         }
       }
@@ -24,7 +24,7 @@ const Post = props => {
   const post = data && data.post
   return (
     <Layout>
-      <Img className={ postStyles.image } fluid={post.image.asset.fluid} />
+      <Img className={ postStyles.image } fixed={post.image.asset.fixed} />
       <p>{post.description}</p>
     </Layout>
   )

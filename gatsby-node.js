@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   postEdges.forEach((edge, index) => {
     const { id, slug } = edge.node
-    const path = `/post/${slug}`
+    const path = `/${slug}`
 
     createPage({
       path,
