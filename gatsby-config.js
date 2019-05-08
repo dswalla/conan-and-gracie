@@ -1,4 +1,5 @@
 const path = require(`path`)
+require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -28,6 +29,16 @@ module.exports = {
       options: {
         name: `images`,
         path: path.join(__dirname, `src`, `images`)
+      }
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: "ajuuvc35",
+        dataset: "dev",
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        overlayDrafts: true
       }
     },
     `gatsby-transformer-sharp`,

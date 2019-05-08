@@ -7,6 +7,7 @@ export default ({ children }) => (
   <div className={ layoutStyles.layout }>
     <Helmet
       title="Conan & Gracie"
+      description="A blog dedicated to bringing you only the best Conan & Gracie content"
       link={[
         { rel: "icon", type: "image/png", sizes: "32x32", href: `${favicon}` },
         { rel: "shortcut icon", type: "image/png", href: `${favicon}` }
