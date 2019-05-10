@@ -7,7 +7,14 @@
 
 .title, .nav__button {
   text-decoration: none;
-  color: hsla(0, 0%, 0%, 0.8);
+}
+
+.title {
+  color: #CA2E31;
+}
+
+.title:hover {
+  color: #D96C6E;
 }
 
 .nav {
@@ -21,6 +28,7 @@
 .nav__button {
   padding: auto 15px;
   font-size: 1rem;
+  color: hsla(0, 0%, 0%, 0.8);
 }
 
 .content {

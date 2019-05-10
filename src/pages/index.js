@@ -15,7 +15,7 @@ export const query = graphql`
           _createdAt
           image {
             asset {
-              fixed(width: 400) {
+              fixed(width: 500) {
                 ...GatsbySanityImageFixed
               }
             }
@@ -29,12 +29,13 @@ export default ({ data }) => (
   <Layout>
     {data.allSanityPost.edges.map(({ node }) => {
       const date = new Date(node._createdAt).toLocaleString()
+      const displayedDate = date.substr(0, date.indexOf(','))
       return(
         <Link to={`/${node.title.replace(/\W+/g, '-').toLowerCase()}`} className={ indexStyles.link }>
           <div className={ indexStyles.post }>
             <div className={ indexStyles.post__header }>
               <h3 className={ indexStyles.post__title }>{node.title}</h3>
-              <span>Posted on {date}</span>
+              <span>Posted on {displayedDate}</span>
             </div>
             <Img className={ indexStyles.post__image } fixed={node.image.asset.fixed} />
           </div>
