@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            slug
+            title
           }
         }
       }
@@ -18,7 +18,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const postEdges = (result.data.allSanityPost || {}).edges || []
 
   postEdges.forEach((edge, index) => {
-    const { id, slug } = edge.node
+    const { id, title } = edge.node
+    const slug = title.replace(/\W+/g, '-').toLowerCase();
     const path = `/${slug}`
 
     createPage({
