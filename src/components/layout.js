@@ -12,11 +12,16 @@ export default ({ children }) => (
         { rel: "shortcut icon", type: "image/png", href: `${favicon}` }
     ]}>
       <title>Conan & Gracie</title>
-      <description>A blog dedicated to bringing you only the best Conan & Gracie content"</description>
+      <meta name="description" content="A blog dedicated to bringing you only the best Conan & Gracie content" />
     </Helmet>
     <Link to={`/`} className={ layoutStyles.title }>
       <h1 className={ layoutStyles.title }>Conan & Gracie</h1>
     </Link>
+    <div className={ layoutStyles.nav }>
+      <Link to={`/`} className={ layoutStyles.nav__button }>Dog Blog</Link>
+      <Link to={`/about`} className={ layoutStyles.nav__button }>About</Link>
+      <Link to={`/contact`} className={ layoutStyles.nav__button }>Contact</Link>
+    </div>
     <div className={ layoutStyles.content }>
       {children}
     </div>

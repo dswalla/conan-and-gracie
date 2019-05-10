@@ -1,0 +1,13 @@
+.info {
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
+
+a {
+  font-weight: 700;
+}
+
+a:hover {
+  color: #555;
+}

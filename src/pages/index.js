@@ -1,26 +1,45 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import indexStyles from "./index.module.css"
 
-export default ({ data }) => (
-  <Layout>
-    <Img className={ indexStyles.dogs } fluid={data.file.childImageSharp.fluid} />
-    <p><strong>Welcome to the dog blog.</strong></p>
-    <p>This website is the future home of all the Conan and Gracie content you
-    could ever want.</p>
-  </Layout>
-)
-
 export const query = graphql`
-  query {
-    file(relativePath: { eq: "Conan&Gracie.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+  {
+    allSanityPost(sort: { fields: [_createdAt], order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          description
+          _createdAt
+          image {
+            asset {
+              fixed(width: 400) {
+                ...GatsbySanityImageFixed
+              }
+            }
+          }
         }
       }
     }
   }
 `
+export default ({ data }) => (
+  <Layout>
+    {data.allSanityPost.edges.map(({ node }) => {
+      const date = new Date(node._createdAt).toLocaleString()
+      return(
+        <Link to={`/${node.title.replace(/\W+/g, '-').toLowerCase()}`} className={ indexStyles.link }>
+          <div className={ indexStyles.post }>
+            <div className={ indexStyles.post__header }>
+              <h3 className={ indexStyles.post__title }>{node.title}</h3>
+              <span>Posted on {date}</span>
+            </div>
+            <Img className={ indexStyles.post__image } fixed={node.image.asset.fixed} />
+          </div>
+        </Link>
+      )
+    })}
+  </Layout>
+)
