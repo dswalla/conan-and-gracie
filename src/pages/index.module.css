@@ -40,8 +40,31 @@
   max-width: 100%;
 }
 
+.page__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 7.5vh;
+}
+
+.nav__el {
+  display: block;
+  text-decoration: none;
+  color: #CA2E31;
+}
+
+.nav__el:hover {
+  color: #D96C6E;
+}
+
 @media only screen and (max-width: 450px) {
   .post__header {
     padding: 0 7.5px;
+  }
+
+  .nav__el {
+    font-size: 8vw;
   }
 }
